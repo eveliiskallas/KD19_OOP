@@ -1,23 +1,41 @@
 // DOCUMENT METHODS - DOKUMENDI MEETODID
-// SINGLE ELEMENT SELECTOR - ÜKSIKUTE ELEMENTIDE SELEKTOR
+// MULTIPLY ELEMENT SELECTOR - MITME ELEMENTI SELEKTOR
 
-sisu = document.getElementById('title'); // html sisu 
-
-id = document.getElementById('title').id; // id
-klass = document.getElementById('title').className; // klass
-
-// STIILI MUUTMINE
-// sisu.style.background = '#333'; // stiili lisamine
-document.getElementById('title').style.background = '#eee';
-sisu.style.color = '#FFF';
-sisu.style.padding = '5px';
-// sisu.style.display = 'none';
-
-// SISU MUUTMINE 
-sisu.textContent = 'Minu Ülesanne';
-sisu.innerText  = 'Just Minu Ülesanne';
-sisu.innerHTML = '<span style="color:green">Vabad Ülesanded</span>'
-
+let sisu = document.getElementsByClassName('collection-item');
+// klassi nime järgi 
 console.log(sisu);
+console.log(sisu[0]);
+sisu[0].style.color = 'orange'
+sisu[2].textContent = 'Õpi Arvutivõrgud'
 
+// querySelector + klassi järgi
+let nimekirjaElemendid = document.querySelector('ul').getElementsByClassName('collection-item');
 
+// nimekirja nime järgi 
+nimekirjaElemendid = document.getElementsByTagName('li');
+
+// teisendame HTMLCollection massiiviks (array)
+nimekirjaElemendid = Array.from(nimekirjaElemendid);
+
+// massiivi meetodite kasutamine
+nimekirjaElemendid.reverse();
+
+// MASSIIVI LÄBIOMINE TSÜKLIS
+
+// for
+for(let i = 0; i < nimekirjaElemendid.length; i++){
+    // console.log(nimekirjaElemendid[i].className);
+    nimekirjaElemendid[i].style.background = '#ddd'
+    nimekirjaElemendid[1].style.background = '#f4f4f4'
+}
+// forEach
+// nimekirjaElemendid.forEach(function(element) {
+//     console.log(element);
+//     element.style.background = '#ddd';
+// });
+
+let nimekiriPaaritu = document.querySelectorAll('li:nth-child(odd)');
+console.log(nimekiriPaaritu);
+
+let nimekiriPaaris = document.querySelectorAll('li:nth-child(even)');
+console.log(nimekiriPaaris);
