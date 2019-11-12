@@ -11,7 +11,12 @@ klass = document.getElementById('title').className; // klass
 document.getElementById('title').style.background = '#eee';
 sisu.style.color = '#FFF';
 sisu.style.padding = '5px';
-sisu.style.display = 'none';
+// sisu.style.display = 'none';
+
+// SISU MUUTMINE 
+sisu.textContent = 'Minu Ülesanne';
+sisu.innerText  = 'Just Minu Ülesanne';
+sisu.innerHTML = '<span style="color:green">Vabad Ülesanded</span>'
 
 console.log(sisu);
 
