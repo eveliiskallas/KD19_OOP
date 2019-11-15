@@ -39,3 +39,7 @@ console.log(nimekiriPaaritu);
 
 let nimekiriPaaris = document.querySelectorAll('li:nth-child(even)');
 console.log(nimekiriPaaris);
+
+// NODE OMADUSED JA MEETODID
+
+let nimekiri = document.querySelectorAll('ul');
