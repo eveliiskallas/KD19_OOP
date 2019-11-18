@@ -14,4 +14,25 @@ const ulElement = document.querySelector('ul');
 //li on ul lapsed 
 ulElement.removeChild(liElemendid[1]);
 
-console.log(ulElement);
+// KLASSI JA ATRIBUUDI KUSTUTAMINE
+
+// nimekirja element
+const liElement = liElemendid[0]; 
+// kustutamislink
+const link = liElement.children[0];
+
+// Klass
+let sisu = link.className;
+sisu = link.classList;
+sisu = link.classList[1]; //kustutas kindla klassi nime 
+link.classList.remove('secondary-content');
+sisu = link;
+
+// Atribuut 
+sisu = link.getAttribute('href');
+link.setAttribute('href', 'https://google.com')
+link.setAttribute('title', 'Google')
+link.removeAttribute('title');
+sisu = link;
+
+console.log(sisu);
