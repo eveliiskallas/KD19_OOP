@@ -1,56 +1,39 @@
 // DOCUMENT METHODS - DOKUMENDI MEETODID
-// NODE OMADUSED JA MEETODID
+// ELEMENTIDE LOOMINE 
 
-let nimekiri = document.querySelectorAll('ul.collection');
-let nimekirjaElement = document.querySelectorAll('li.collection-item')
+// Loo Element
+const liElement = document.createElement('li');
 
-console.log(nimekiri);
-console.log(nimekirjaElement);
+// Lisa Klass
+liElement.className = 'collection-item';
 
-nimekiri = document.querySelector('ul.collection');
-console.log(nimekiri);
+// Lisa ID
+liElement.id = 'new-item';
 
-sisu = nimekiri.childNodes;
-sisu = nimekiri.childNodes[0];
-sisu = nimekiri.childNodes[0].nodeName;
-sisu = nimekiri.childNodes[5].nodeType;
+// Lisa Atribuut
+liElement.setAttribute('title', 'Uus Element');
 
-/* 
-erinevad node tüübid 
-1 - element 
-2 - attribute 
-3 - tekst 
-8 - kommentaar 
-9 - dokument 
-10 - doctype 
-*/
+// Lisa Teksti väljund 
+// liElement.innerHTML = 'Uus element';
+liElement.textContent = 'Uus element';
 
-sisu = nimekiri.children;
-sisu = nimekiri.children[1];
-nimekiri.children[1].textContent = 'Õpi Rohkem JavaScripti!'
-sisu = nimekiri.children[2].children[0].id = 'katse';
-console.log(sisu);
-console.log(nimekiri.children[2].children[0]);
+// Loo Lingi Element 
+const link = document.createElement('a');
 
-sisu = nimekiri.firstChild; // node type 
-sisu = nimekiri.firstElementChild; // value
+// Lisa Lingi Klassid
+link.className = 'delete-item secondary-content';
 
-sisu = nimekiri.lastChild;  
-sisu = nimekiri.lastElementChild;  
+// Lisame Kustutamisikooni
+link.innerHTML = '<i class="fa fa-remove"></i>'
 
-sisu = nimekiri.childElementCount; 
+// Lisa Link Listi Elemendi sisse 
+liElement.appendChild(link);
 
-nimekirjaElement = document.querySelector('li.collection-item:nth-child(2)'); 
-sisu = nimekirjaElement.parentNode;
-sisu = nimekirjaElement.parentElement;
-sisu = nimekirjaElement.parentElement.parentElement;
+// Lisa List Nimekirja sisse 
+ulElement = document.querySelector('ul.collection');
+ulElement.appendChild(liElement);
 
-sisu = nimekirjaElement.nextSibling; // node type
-sisu = nimekirjaElement.nextElementSibling; // value
-
-sisu = nimekirjaElement.previousSibling;  
-sisu = nimekirjaElement.previousElementSibling;  
+console.log(liElement);
 
 
-console.log(sisu);
-
+// console.log(link);
