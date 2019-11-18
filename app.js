@@ -1,33 +1,17 @@
 // DOCUMENT METHODS - DOKUMENDI MEETODID
-// ELEMENTIDE ASENDAMINE 
+// ELEMENTIDE KUSTUTAMINE 
 
-// Elemendi leidmine (h5)
-const vanaPealkiri = document.querySelector('h5');
+// Leian antud DOM'is kõik Listi elemendid
+const liElemendid = document.querySelectorAll('li');
 
-// Leiame elemendi divi
+// Kustuta konkreetne element 
+liElemendid[2].remove();
 
-const pealkirjaDiv = document.querySelector('div.card-action');
+// Leia antud DOM'is ul element 
+const ulElement = document.querySelector('ul');
 
-// Loo uus pealkiri 
-const uusPealkiri = document.createElement('h3');
+// kustuta antud elemendist li 
+//li on ul lapsed 
+ulElement.removeChild(liElemendid[1]);
 
-// lisa id 
-uusPealkiri.id = 'new-title';
-
-// lisa sisu 
-uusPealkiri.textContent = 'Uued Ülesanded';
-// uusPealkiri.appendChild(document.createTextNode('Uued ülesanded'));
-
-// Aenda vana pealkiri uuega 
-pealkirjaDiv.replaceChild( uusPealkiri, vanaPealkiri);
-
-////////
-
-const ylesanded = document.querySelector('span#title');
-const ylDiv = document.querySelector('div.card-content');
-const uusYlesanne = document.createElement('h3');
-uusYlesanne.id = 'new-yl-title';
-uusYlesanne.textContent = 'Sinu Ülesanded';
-ylDiv.replaceChild(uusYlesanne, ylesanded);
-
-console.log(ylesanded);
+console.log(ulElement);
