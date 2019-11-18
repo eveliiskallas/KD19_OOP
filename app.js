@@ -1,39 +1,33 @@
 // DOCUMENT METHODS - DOKUMENDI MEETODID
-// ELEMENTIDE LOOMINE 
+// ELEMENTIDE ASENDAMINE 
 
-// Loo Element
-const liElement = document.createElement('li');
+// Elemendi leidmine (h5)
+const vanaPealkiri = document.querySelector('h5');
 
-// Lisa Klass
-liElement.className = 'collection-item';
+// Leiame elemendi divi
 
-// Lisa ID
-liElement.id = 'new-item';
+const pealkirjaDiv = document.querySelector('div.card-action');
 
-// Lisa Atribuut
-liElement.setAttribute('title', 'Uus Element');
+// Loo uus pealkiri 
+const uusPealkiri = document.createElement('h3');
 
-// Lisa Teksti väljund 
-// liElement.innerHTML = 'Uus element';
-liElement.textContent = 'Uus element';
+// lisa id 
+uusPealkiri.id = 'new-title';
 
-// Loo Lingi Element 
-const link = document.createElement('a');
+// lisa sisu 
+uusPealkiri.textContent = 'Uued Ülesanded';
+// uusPealkiri.appendChild(document.createTextNode('Uued ülesanded'));
 
-// Lisa Lingi Klassid
-link.className = 'delete-item secondary-content';
+// Aenda vana pealkiri uuega 
+pealkirjaDiv.replaceChild( uusPealkiri, vanaPealkiri);
 
-// Lisame Kustutamisikooni
-link.innerHTML = '<i class="fa fa-remove"></i>'
+////////
 
-// Lisa Link Listi Elemendi sisse 
-liElement.appendChild(link);
+const ylesanded = document.querySelector('span#title');
+const ylDiv = document.querySelector('div.card-content');
+const uusYlesanne = document.createElement('h3');
+uusYlesanne.id = 'new-yl-title';
+uusYlesanne.textContent = 'Sinu Ülesanded';
+ylDiv.replaceChild(uusYlesanne, ylesanded);
 
-// Lisa List Nimekirja sisse 
-ulElement = document.querySelector('ul.collection');
-ulElement.appendChild(liElement);
-
-console.log(liElement);
-
-
-// console.log(link);
+console.log(ylesanded);
