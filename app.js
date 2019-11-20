@@ -1,54 +1,25 @@
 // SÜNDMUSED
 
-const form = document.querySelector('form');
-const lisaUusYlesanne = document.getElementById('task');
-const pealkiri = document.querySelector('h5');
+// bubbling 
 
-// kustutame lisaUusYlesanne väärtus 
-lisaUusYlesanne.value = '';
+// lehe kaardi pealkiri
+// document.querySelector('.card-title').addEventListener('click', function(e){
+//     console.log('card-title');
+// });
 
-// klaviatuur 
+// lehe kaardi sisu 
+// document.querySelector('.card-content').addEventListener('click', function(e){
+//     console.log('card-content');
+// });
 
-// keydown 
-// lisaUusYlesanne.addEventListener('keydown', syndmus);
+// delegeerimine
+const kustutaYlesanne = document.querySelector('.delete-item');
+kustutaYlesanne.addEventListener('click', kustuta);
 
-// keyup 
-// lisaUusYlesanne.addEventListener('keyup', syndmus);
-
-// keypress 
-// lisaUusYlesanne.addEventListener('keypress', syndmus);
-
-// focus  
-// lisaUusYlesanne.addEventListener('focus', syndmus);
-
-// blur  
-// lisaUusYlesanne.addEventListener('blur', syndmus);
-
-// paste  
-// lisaUusYlesanne.addEventListener('paste', syndmus);
-
-// cut  
-// lisaUusYlesanne.addEventListener('cut', syndmus);
-
-// input  
-// lisaUusYlesanne.addEventListener('input', syndmus);
-
-// input  
-// lisaUusYlesanne.addEventListener('input', syndmus);
-
-
-
-// vormi saatmine 
-// form.addEventListener('submit', syndmus);
-
-function syndmus(e){
-  // logi sündmuse tüüp 
-  console.log(`Sündmuse tüüp: ${e.type}`);
-
-  // kontrollime vormi kaudu saadetud väärtust 
-  console.log(lisaUusYlesanne.value);
-
-  // väljastame ülesanne HTML-is 
-  pealkiri.innerText = lisaUusYlesanne.value;
-
+function kustuta(e){
+    console.log(e.target.parentElement);
+    if(e.target.parentElement.classList.contains('delete-item')){
+    console.log('kustuta');
+    e.target.parentElement.parentElement.remove();
+    }
 }
