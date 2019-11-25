@@ -21,8 +21,15 @@ Isik.prototype.arvutaVanus = function(){
     return vanus;
 }
 
+// abiellumine
+Isik.prototype.abiellus = function(uusPereNimi){
+    this.perenimi = uusPereNimi;
+}
+
 
 const eveliis = new Isik('Eveliis', 'Kallas', '03-06-1998');
 const nele = new Isik('Nele', 'Kallas',  '11-21-2008');
-console.log(eveliis);
-console.log(nele.taisNimi());
+const kadi = new Isik('Kadi', 'Kana',  '06-15-1992');
+
+kadi.abiellus('Vaher')
+// console.log(kadi.taisNimi());
