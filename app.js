@@ -6,6 +6,20 @@ function Raamat(p, a, i){
     this.isbn = i;
 }
 
+// Kasutajaliides - KL 
+
+function KL(){
+
+}
+
+// KL funktsionaal
+// sisendväljade puhastamine 
+KL.prototype.puhastaSisend = function(){
+    document.getElementById('title').value = '';
+    document.getElementById('author').value = '';
+    document.getElementById('isbn').value = '';
+}
+
 // Kirjeldame raamatu lisamise sündmuse 
 
 document.getElementById('book-form').addEventListener('submit', lisaRaamat);
@@ -21,6 +35,12 @@ function lisaRaamat(e){
     const raamat = new Raamat(pealkiri, autor, isbn);
 
     console.log(raamat);
+
+    // loome kasutajaliidese objekti temaga opereerimiseks
+    const kl = new KL();
+
+    // puhastame väljad sisestatud andmetest
+    kl.puhastaSisend();
 
     e.preventDefault();
 }
