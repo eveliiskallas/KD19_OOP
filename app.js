@@ -1,36 +1,26 @@
-// INIMESE KIRJELDUS OOP ABIL 
-// klasside kasutamine 
+// RAAMATU KONSTRUKTOR 
 
-class Isik {
-    // konstruktor
-    constructor(e, p,){
-        this.eesnimi = e;
-        this.perenimi = p;
-    }
-
-    // tervitus meetod 
-    tervitus(){
-        return `Tere ${this.eesnimi} ${this.perenimi}`
-    }
-
+function Raamat(p, a, i){
+    this.pealkiri = p;
+    this.autor = a;
+    this.isbn = i;
 }
 
-class Klient extends Isik {
-    constructor(e, p, t, s){
-        super(e, p);
-        this.telefon = t;
-        this.staatus = s;
-    }
+// Kirjeldame raamatu lisamise sündmuse 
 
-    // staatiline meetod 
-    static kuutasu(){
-        return 5;
-    }
+document.getElementById('book-form').addEventListener('submit', lisaRaamat);
+
+// Raamatu lisamise funktsioon 
+
+function lisaRaamat(e){
+    const pealkiri = document.getElementById('title').value;
+    const autor = document.getElementById('author').value;
+    const isbn = document.getElementById('isbn').value;
+
+    // loome raamatud andmete põhjal 
+    const raamat = new Raamat(pealkiri, autor, isbn);
+
+    console.log(raamat);
+
+    e.preventDefault();
 }
-
-const kadi = new Klient('Kadi', 'Tamm', '1234 5678', 'hõbe');
-console.log(kadi.tervitus());
-console.log(Klient.kuutasu());
-
-
- 
