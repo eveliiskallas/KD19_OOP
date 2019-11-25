@@ -26,12 +26,19 @@ function salvesta(e){
         ylesanded = [];
         console.log(ylesanded)
     } else {
-        console.log('olemas, tuleb lugeda');
+        // console.log('olemas, tuleb lugeda');
         ylesanded = JSON.parse(localStorage.getItem('tasks'));
-        console.log(ylesanded);
     }
-    localStorage.setItem('tasks', UusYlesanne);
-
+    console.log(ylesanded);
+    ylesanded.push(UusYlesanne); // lisame element massiivi lõppu 
+    localStorage.setItem('tasks', JSON.stringify(ylesanded)); // lisame andmed LS sisse 
+    e.preventDefault();
 }
+
+// loeme sisestatud ülesanded
+const ylesanded = JSON.parse(localStorage.getItem('tasks'));
+ylesanded.forEach(ylesanne => {
+    console.log(ylesanne);
+});
 
 
