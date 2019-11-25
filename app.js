@@ -3,10 +3,9 @@
 
 class Isik {
     // konstruktor
-    constructor(e, p, skp){
+    constructor(e, p,){
         this.eesnimi = e;
         this.perenimi = p;
-        this.synnikuupaev = new Date(skp);
     }
 
     // tervitus meetod 
@@ -14,25 +13,24 @@ class Isik {
         return `Tere ${this.eesnimi} ${this.perenimi}`
     }
 
-    // vanuse arvutamine 
-
-    arvutaVanus(){
-        const vahe = Date.now() - this.synnikuupaev.getTime();
-        const vanus = new Date(vahe);
-        return vanus.getUTCFullYear - 1970;
-    }
-
-    // abiellus 
-    abiellus(uusPereNimi){
-        this.perenimi = uusPereNimi;
-    }
-
-
 }
 
-const kadi = new Isik('Kadi', 'Tamm', '07-30-1997');
-kadi.abiellus('Vaher');
+class Klient extends Isik {
+    constructor(e, p, t, s){
+        super(e, p);
+        this.telefon = t;
+        this.staatus = s;
+    }
+
+    // staatiline meetod 
+    static kuutasu(){
+        return 5;
+    }
+}
+
+const kadi = new Klient('Kadi', 'Tamm', '1234 5678', 'hõbe');
 console.log(kadi.tervitus());
-console.log(kadi.arvutaVanus());
+console.log(Klient.kuutasu());
+
 
  
