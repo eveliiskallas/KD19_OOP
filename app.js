@@ -67,9 +67,8 @@ KL.prototype.teade = function(s, stiil){
 
 }
 
-// raamatu salvestamine 
-KL.prototype.salvestaRaamat = function(r){
-    // loome raamatute hoidla local storages 
+// raamatute lugemine local storagest 
+KL.prototype.loeRaamatud = function(){
     let raamatud;
     // kui raamatuid veel local storages ei eksisteeri
     if(localStorage.getItem('raamatud') === null){
@@ -78,7 +77,18 @@ KL.prototype.salvestaRaamat = function(r){
         // kui on, siis need tuleb kätte saada 
         raamatud = JSON.parse(localStorage.getItem('raamatud'));
     }
+    return raamatud;
+}
+
+// raamatu salvestamine 
+KL.prototype.salvestaRaamat = function(r){
+    // loome raamatute hoidla local storages 
+
+    // tekitame raamatute massiivi
+    raamatud = this.loeRaamatud();
+    // lükkame uue raamatu andmed massiivi 
     raamatud.push(r);
+    // lisame andmed local storagesse
     localStorage.setItem('raamatud', JSON.stringify(raamatud));
     console.log(raamatud);
 }
