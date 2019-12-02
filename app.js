@@ -39,6 +39,7 @@ KL.prototype.lisaRaamatTabelisse = function(r){
 KL.prototype.teade = function(s){
     // loome div, kuhu lisada teate sõnum 
     const div = document.createElement('div');
+    div.className = 'alert';
     // lisame sõnumi teksti 
     const tekst = document.createTextNode(s);
     div.appendChild(tekst);
@@ -47,6 +48,11 @@ KL.prototype.teade = function(s){
     const vorm = document.getElementById('book-form');
     // lisame teate dokumenti 
     konteiner.insertBefore(div, vorm);
+
+    // Kustutame teate pärast 5 sekundit
+    setTimeout(function(){
+        document.querySelector('.alert').remove();
+    }, 5000)
 
 }
 
