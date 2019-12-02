@@ -42,9 +42,11 @@ KL.prototype.kustutaRaamatTabelist = function(kustutaElement){
     if(kustutaElement.className === 'kustuta'){
         tabeliRida = kustutaElement.parentElement.parentElement;
         tabeliRida.remove();
-        return true();
+        return true;
     }
 }
+
+
 
 // teade väljastamine 
 KL.prototype.teade = function(s, stiil){
@@ -107,6 +109,23 @@ KL.prototype.naitaRaamatut = function(){
     });
 }
 
+KL.prototype.kustutaRaamatLS = function(isbn){
+    // vaatame, millised raamatud on olemas
+    const raamatud = this.loeRaamatud();
+    raamatud.forEach(function(raamat, index){
+        // loeme andmed local storagest ühekaupa ja võrdleme 
+        if(raamat.isbn === isbn){
+            raamatud.splice(index, 1);
+        }
+    });
+    // lisame andmed local storagesse 
+    localStorage.setItem('raamatud', JSON.stringify(raamatud));
+    // kinnitan kustutamist teate väljastamiseks 
+    return true;
+
+    
+}
+
 // kirjeldame andmete lugemise sündmust local storagest 
 document.addEventListener('DOMContentLoaded', raamatuteTabel);
 
@@ -117,6 +136,8 @@ function raamatuteTabel(e){
     // kutsume raamatute näitamise funktsiooni
     kl.naitaRaamatut();
 };
+
+//
 
 
 
@@ -168,8 +189,17 @@ function kustutaRaamat(e){
     // loome kasutajaliidese objekti temaga opereerimiseks
     const kl = new KL();
 
+
     // kutsutakse tabelist oleva raamatu kustutamise funktsiooni 
-    onKustutatud = kl.kustutaRaamatTabelist(e.target);
+    // loome X link, millele clickime, et kustutada 
+    const X = e.target; 
+    // saame kustutava raamatu isbn kätte 
+    isbn = X.parentElement.previousElementSibling.textContent;
+    console.log(isbn);
+    // kustutame andmed tabeli väljundist 
+    kl.kustutaRaamatTabelist(X);
+    // kustutame andmed local storagest 
+    onKustutatud = kl.kustutaRaamatLS(isbn);
 
     // väljastame vastava teate 
     if(onKustutatud){
