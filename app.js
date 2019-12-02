@@ -41,7 +41,6 @@ KL.prototype.lisaRaamatTabelisse = function(r){
 KL.prototype.kustutaRaamatTabelist = function(kustutaElement){
     if(kustutaElement.className === 'kustuta'){
         tabeliRida = kustutaElement.parentElement.parentElement;
-        console.log(tabeliRida)
         tabeliRida.remove();
         return true();
     }
@@ -66,6 +65,22 @@ KL.prototype.teade = function(s, stiil){
         document.querySelector('.alert').remove();
     }, 2000)
 
+}
+
+// raamatu salvestamine 
+KL.prototype.salvestaRaamat = function(r){
+    // loome raamatute hoidla local storages 
+    let raamatud;
+    // kui raamatuid veel local storages ei eksisteeri
+    if(localStorage.getItem('raamatud') === null){
+        raamatud = [];
+    } else {
+        // kui on, siis need tuleb kätte saada 
+        raamatud = JSON.parse(localStorage.getItem('raamatud'));
+    }
+    raamatud.push(r);
+    localStorage.setItem('raamatud', JSON.stringify(raamatud));
+    console.log(raamatud);
 }
 
 // Kirjeldame raamatu lisamise sündmuse 
@@ -94,6 +109,10 @@ function lisaRaamat(e){
         // muidu lisame sisestatud raamatu tabelisse 
         // lisame sisestatud raamatu tabelisse 
         kl.lisaRaamatTabelisse(raamat);
+
+        // lisame raamatu andmed  local storage'sse
+        kl.salvestaRaamat(raamat);
+
         kl.teade('Raamat on lisatud tabelisse', 'valid');
 
         
