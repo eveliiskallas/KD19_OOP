@@ -93,6 +93,33 @@ KL.prototype.salvestaRaamat = function(r){
     console.log(raamatud);
 }
 
+// salvestatud raamatute näitamine 
+KL.prototype.naitaRaamatut = function(){
+    // vaatame, millised raamatud on olemas 
+    const raamatud = this.loeRaamatud();
+    raamatud.forEach(function(raamat){
+        // loeme andmed local storagest ühekaupa ja teisendame Raamat objektiks 
+        const r = new Raamat(raamat['autor'], raamat['pealkiri'], raamat['isbn']);
+        // loome kl objekti väljastamiseks 
+        const kl = new KL();
+        // väljastame tabeli rida
+        kl.lisaRaamatTabelisse(r);
+    });
+}
+
+// kirjeldame andmete lugemise sündmust local storagest 
+document.addEventListener('DOMContentLoaded', raamatuteTabel);
+
+// raamatute tabeli funktsoon
+function raamatuteTabel(e){
+    // loome kasutajaliidese objekti temaga opereerimiseks
+    const kl = new KL();
+    // kutsume raamatute näitamise funktsiooni
+    kl.naitaRaamatut();
+};
+
+
+
 // Kirjeldame raamatu lisamise sündmuse 
 
 document.getElementById('book-form').addEventListener('submit', lisaRaamat);
