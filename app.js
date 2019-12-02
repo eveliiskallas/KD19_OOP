@@ -12,6 +12,12 @@ function KL(){
 
 }
 
+// LocalStorage - LS 
+// konstruktor 
+function LS(){
+
+}
+
 // KL funktsionaal
 // sisendväljade puhastamine 
 KL.prototype.puhastaSisend = function(){
@@ -70,7 +76,7 @@ KL.prototype.teade = function(s, stiil){
 }
 
 // raamatute lugemine local storagest 
-KL.prototype.loeRaamatud = function(){
+LS.prototype.loeRaamatud = function(){
     let raamatud;
     // kui raamatuid veel local storages ei eksisteeri
     if(localStorage.getItem('raamatud') === null){
@@ -83,7 +89,7 @@ KL.prototype.loeRaamatud = function(){
 }
 
 // raamatu salvestamine 
-KL.prototype.salvestaRaamat = function(r){
+LS.prototype.salvestaRaamat = function(r){
     // loome raamatute hoidla local storages 
 
     // tekitame raamatute massiivi
@@ -98,7 +104,9 @@ KL.prototype.salvestaRaamat = function(r){
 // salvestatud raamatute näitamine 
 KL.prototype.naitaRaamatut = function(){
     // vaatame, millised raamatud on olemas 
-    const raamatud = this.loeRaamatud();
+    const ls = new LS()
+
+    const raamatud = ls.loeRaamatud();
     raamatud.forEach(function(raamat){
         // loeme andmed local storagest ühekaupa ja teisendame Raamat objektiks 
         const r = new Raamat(raamat['autor'], raamat['pealkiri'], raamat['isbn']);
@@ -109,8 +117,10 @@ KL.prototype.naitaRaamatut = function(){
     });
 }
 
-KL.prototype.kustutaRaamatLS = function(isbn){
+LS.prototype.kustutaRaamatLS = function(isbn){
     // vaatame, millised raamatud on olemas
+    // loome kasutajaliidese objekti temaga opereerimiseks
+        const kl = new KL();
     const raamatud = this.loeRaamatud();
     raamatud.forEach(function(raamat, index){
         // loeme andmed local storagest ühekaupa ja võrdleme 
@@ -168,8 +178,11 @@ function lisaRaamat(e){
         // lisame sisestatud raamatu tabelisse 
         kl.lisaRaamatTabelisse(raamat);
 
+        // loome LS objekti funktsiooni kutsumiseks 
+        const ls = new LS();
+
         // lisame raamatu andmed  local storage'sse
-        kl.salvestaRaamat(raamat);
+        ls.salvestaRaamat(raamat);
 
         kl.teade('Raamat on lisatud tabelisse', 'valid');
 
@@ -199,7 +212,9 @@ function kustutaRaamat(e){
     // kustutame andmed tabeli väljundist 
     kl.kustutaRaamatTabelist(X);
     // kustutame andmed local storagest 
-    onKustutatud = kl.kustutaRaamatLS(isbn);
+    const ls = new LS()
+
+    onKustutatud = ls.kustutaRaamatLS(isbn);
 
     // väljastame vastava teate 
     if(onKustutatud){
