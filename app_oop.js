@@ -1,5 +1,15 @@
 // app_oop.js
 
+document.addEventListener('DOMContentLoaded', raamatuteTabel);
+
+// raamatutetabeli funktsoon
+function raamatuteTabel(e){
+    // loome kasutajaliidese objekti temaga opereerimiseks
+    kl = new KL();
+    // kutsume raamatute näitamise funktsiooni
+    kl.naitaRaamatud();
+};
+
 // Kirjeldame raamatu lisamise sündmuse 
 document.getElementById('book-form').addEventListener('submit', lisaRaamat);
 
@@ -23,9 +33,9 @@ function lisaRaamat(e){
         // lisame sisestatud raamatu tabelisse 
         kl.lisaRaamatTabelisse(raamat);
         // loome LS objekti funktsiooni kutsumiseks 
-        // const ls = new LS();
+        const ls = new LS();
         // lisame raamatu andmed  local storage'sse
-        // ls.salvestaRaamat(raamat);
+        ls.salvestaRaamat(raamat);
         kl.teade('Raamat on lisatud tabelisse', 'valid');    
     };
     // puhastame väljad sisestatud andmetest
@@ -47,12 +57,12 @@ function kustutaRaamat(e){
     // kustutame andmed tabeli väljundist 
     kl.kustutaRaamatTabelist(X);
     // kustutame andmed local storagest 
-    // const ls = new LS()
-    // onKustutatud = ls.kustutaRaamatLS(isbn);
+    const ls = new LS()
+    onKustutatud = ls.kustutaRaamatLS(isbn);
     // väljastame vastava teate 
-    // if(onKustutatud){
+    if(onKustutatud){
     kl.teade('Raamat on kustutatud', 'valid');
-    // }
+    }
     e.preventDefault();
 }
 

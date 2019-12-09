@@ -91,7 +91,6 @@ LS.prototype.loeRaamatud = function(){
 // raamatu salvestamine 
 LS.prototype.salvestaRaamat = function(r){
     // loome raamatute hoidla local storages 
-
     // tekitame raamatute massiivi
     raamatud = this.loeRaamatud();
     // lükkame uue raamatu andmed massiivi 
@@ -120,7 +119,7 @@ KL.prototype.naitaRaamatut = function(){
 LS.prototype.kustutaRaamatLS = function(isbn){
     // vaatame, millised raamatud on olemas
     // loome kasutajaliidese objekti temaga opereerimiseks
-        const kl = new KL();
+    const kl = new KL();
     const raamatud = this.loeRaamatud();
     raamatud.forEach(function(raamat, index){
         // loeme andmed local storagest ühekaupa ja võrdleme 

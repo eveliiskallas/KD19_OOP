@@ -55,4 +55,19 @@ class KL {
             return true;
         }
     }
+
+    naitaRaamatud(){
+        // vaatame, millised raamatud on olemas 
+        const ls = new LS()
+
+        const raamatud = ls.loeRaamatud();
+        raamatud.forEach(function(raamat){
+            // loeme andmed local storagest ühekaupa ja teisendame Raamat objektiks 
+            const r = new Raamat(raamat['autor'], raamat['pealkiri'], raamat['isbn']);
+            // loome kl objekti väljastamiseks 
+            const kl = new KL();
+            // väljastame tabeli rida
+            kl.lisaRaamatTabelisse(r);
+        });
+    }
 }
