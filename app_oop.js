@@ -31,8 +31,9 @@ class KL {
             <td><a href="#" class="kustuta">X</a></td>
             
         `;
+
         // lisame rea tabeli sisse <td><a href="#"><i class="fas fa-times kustuta"></i></a></td>
-        tabel = document.getElementById('book-list');
+        const tabel = document.getElementById('book-list');
         tabel.appendChild(rida);
     }
 
@@ -41,9 +42,11 @@ class KL {
         // loome div, kuhu lisada teate sõnum 
         const div = document.createElement('div');
         div.className = `alert ${stiil}`;
+
         // lisame sõnumi teksti 
         const tekst = document.createTextNode(s);
         div.appendChild(tekst);
+
         // leiame elemendid, mille suhtes tuleb lisada uus element 
         const konteiner = document.querySelector('.container');
         const vorm = document.getElementById('book-form');
@@ -65,3 +68,41 @@ class KL {
         }
     }
 }
+
+// Kirjeldame raamatu lisamise sündmuse 
+document.getElementById('book-form').addEventListener('submit', lisaRaamat);
+
+// Raamatu lisamise funktsioon   
+function lisaRaamat(e){
+            
+    const pealkiri = document.getElementById('title').value;
+    const autor = document.getElementById('author').value;
+    const isbn = document.getElementById('isbn').value;
+
+    // loome raamatud andmete põhjal 
+    const raamat = new Raamat(pealkiri, autor, isbn);
+
+    // loome kasutajaliidese objekti temaga opereerimiseks
+    const kl = new KL();
+
+    // kui mingid andmed on puudu, siis anname märku 
+    if(pealkiri == '' | autor == '' | isbn == ''){
+        kl.teade('Andmed on puudu. Tuleb täita kõik väljad', 'invalid');
+    } else {
+        // muidu lisame sisestatud raamatu tabelisse 
+        // lisame sisestatud raamatu tabelisse 
+        kl.lisaRaamatTabelisse(raamat);
+
+        // loome LS objekti funktsiooni kutsumiseks 
+        // const ls = new LS();
+
+        // lisame raamatu andmed  local storage'sse
+        // ls.salvestaRaamat(raamat);
+
+        kl.teade('Raamat on lisatud tabelisse', 'valid');    
+    };
+
+    // puhastame väljad sisestatud andmetest
+    kl.puhastaSisend();
+}
+e.preventDefault();
