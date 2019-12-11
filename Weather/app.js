@@ -1,6 +1,11 @@
 // weather for given location 
 const weather = new Weather('Tartu linn');
 
-cityWeather = weather.weatherData();
+// app UI
+const ui = new UI()
 
-console.log(cityWeather);
+weather.weatherData().then(cityWeather => {
+    ui.print(cityWeather);
+}).catch(error => console.log(error));
+
+console.log(ui);
