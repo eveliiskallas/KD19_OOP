@@ -7,6 +7,12 @@ const ui = new UI()
 // show default city weather 
 document.addEventListener('DOMContentLoaded', drawWeather);
 
+function getLocation(){
+    if(navigator.geolocation){
+        const position = navigator.geolocation.getCurrentPosition(showPosition)
+    }
+}
+
 // change city - weather 
 const changeBtn = document.getElementById('w-change');
 changeBtn.addEventListener('click', changeWeather);
