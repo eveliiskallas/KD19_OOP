@@ -12,16 +12,16 @@ document.getElementById('task-form').addEventListener('submit', lisaYlesanne);
 
 // Raamatu lisamise funktsioon   
 function lisaYlesanne(e){        
-    const task = document.getElementById('task').value;
+    const sisend = document.getElementById('task').value;
 
     // loome raamatud andmete põhjal 
-    const ylesanne = new Ylesanne(task);
+    const ylesanne = new Ylesanne(sisend);
 
     // loome kasutajaliidese objekti temaga opereerimiseks
     const kl = new KL();
 
     // kui mingid andmed on puudu, siis anname märku 
-    if(task == '' ){
+    if(sisend == '' ){
         kl.teade('Lisa ülesanne!', 'invalid');
     } else {
         // muidu lisame sisestatud raamatu tabelisse 
