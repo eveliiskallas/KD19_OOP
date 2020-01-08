@@ -22,7 +22,7 @@ function lisaYlesanne(e){
 
     // kui mingid andmed on puudu, siis anname märku 
     if(sisend == '' ){
-        kl.teade('Lisa ülesanne!', 'invalid');
+        alert('Lisa ülesanne!', 'invalid');
     } else {
         // muidu lisame sisestatud raamatu tabelisse 
         // lisame sisestatud raamatu tabelisse 
@@ -35,4 +35,42 @@ function lisaYlesanne(e){
     };
     // puhastame väljad sisestatud andmetest
     kl.puhastaSisend();
+}
+
+// Raamatu kustutamise sündmus 
+document.getElementById('collection').addEventListener('click', kustutaYlesanne);
+function kustutaYlesanne(e){
+    // loome kasutajaliidese objekti temaga opereerimiseks
+    const kl = new KL();
+
+    // kutsutakse tabelist oleva raamatu kustutamise funktsiooni 
+    // loome X link, millele clickime, et kustutada 
+    const X = e.target; 
+    // saame kustutava raamatu isbn kätte 
+    ylesanne = X.parentElement.textContent;
+    console.log(ylesanne);
+    // kustutame andmed tabeli väljundist 
+    kl.kustutaYlesanneTabelist(X);
+    // kustutame andmed local storagest 
+    const ls = new LS()
+    onKustutatud = ls.kustutaYlesanneLS(ylesanne);
+    // väljastame vastava teate 
+    if(onKustutatud){
+    alert('Oled kindel?', 'valid');
+    }
+    e.preventDefault();
+}
+
+document.getElementById('clear-tasks').addEventListener('click', kustutaKoikYlesanded);
+function kustutaKoikYlesanded(koik){
+    const kl = new KL();
+    // const X = koik.target;
+    // k = X.textContent;
+    // console.log(k);
+    // const ls = new LS();
+    // kustutatud = ls.kustutaKoik(k);
+    // e.preventDefault();
+    kl.kustutaKoikTabelist(koik);
+
+    localStorage.clear();
 }

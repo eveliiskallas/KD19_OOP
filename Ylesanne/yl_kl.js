@@ -17,6 +17,15 @@ class KL {
         list.appendChild(rida);
     }
 
+        // kustutaRaamatTabelist 
+        kustutaYlesanneTabelist(kustutaElement){
+            if(kustutaElement.className === 'kustuta'){
+                const listiRida = kustutaElement.parentElement;
+                listiRida.remove();
+                return true;
+            }
+        }
+
     naitaYlesannet(){
         // vaatame, millised raamatud on olemas 
         const ls = new LS()

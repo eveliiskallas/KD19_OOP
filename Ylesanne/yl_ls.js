@@ -20,14 +20,14 @@ class LS {
         localStorage.setItem('ylesanded', JSON.stringify(ylesanded));
         console.log(ylesanded);
     }
-    kustutaYlesanneLS(task){
+    kustutaYlesanneLS(ylesanne){
         // vaatame, millised raamatud on olemas
         // loome kasutajaliidese objekti temaga opereerimiseks
         const kl = new KL();
         const ylesanded = this.loeYlesannet();
-        ylesanded.forEach(function(ylesanne, index){
+        ylesanded.forEach(function(sisend, index){
         // loeme andmed local storagest ühekaupa ja võrdleme 
-        if(ylesanne.task === task){
+        if(sisend.ylesanne === ylesanne){
             ylesanded.splice(index, 1);
         }
     });
@@ -36,4 +36,12 @@ class LS {
         // kinnitan kustutamist teate väljastamiseks 
         return true;
     }
+
+    // kustutaKoik(k){
+    //     const kl = new KL();
+    //     const ylesanded = this.loeYlesannet();
+    //     if(ylesanded = JSON.parse(localStorage.getItem('ylesanded'))){
+    //         localStorage.clear();
+    //     };
+    // }
 } 
