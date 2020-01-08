@@ -62,15 +62,14 @@ function kustutaYlesanne(e){
 }
 
 document.getElementById('clear-tasks').addEventListener('click', kustutaKoikYlesanded);
-function kustutaKoikYlesanded(koik){
-    const kl = new KL();
-    // const X = koik.target;
-    // k = X.textContent;
-    // console.log(k);
-    // const ls = new LS();
-    // kustutatud = ls.kustutaKoik(k);
-    // e.preventDefault();
-    kl.kustutaKoikTabelist(koik);
+function kustutaKoikYlesanded(k){
+    var element = document.getElementsByTagName("li"), index;
 
+    for (index = element.length - 1; index >= 0; index--) {
+        element[index].parentNode.removeChild(element[index]);
+    }
     localStorage.clear();
+
+    
+
 }

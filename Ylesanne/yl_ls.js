@@ -29,6 +29,7 @@ class LS {
         // loeme andmed local storagest ühekaupa ja võrdleme 
         if(sisend.ylesanne === ylesanne){
             ylesanded.splice(index, 1);
+            
         }
     });
         // lisame andmed local storagesse 
@@ -37,11 +38,4 @@ class LS {
         return true;
     }
 
-    // kustutaKoik(k){
-    //     const kl = new KL();
-    //     const ylesanded = this.loeYlesannet();
-    //     if(ylesanded = JSON.parse(localStorage.getItem('ylesanded'))){
-    //         localStorage.clear();
-    //     };
-    // }
 } 
