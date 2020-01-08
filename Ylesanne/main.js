@@ -47,15 +47,15 @@ function kustutaYlesanne(e){
     // loome X link, millele clickime, et kustutada 
     const X = e.target; 
     // saame kustutava raamatu isbn kätte 
-    ylesanne = X.parentElement.textContent;
-    console.log(ylesanne);
+    task = X.parentElement.textContent;
+    console.log(task);
     // kustutame andmed tabeli väljundist 
     kl.kustutaYlesanneTabelist(X);
     // kustutame andmed local storagest 
     const ls = new LS()
-    onKustutatud = ls.kustutaYlesanneLS(ylesanne);
+    kustutatud = ls.kustutaYlesanneLS(task);
     // väljastame vastava teate 
-    if(onKustutatud){
+    if(kustutatud){
     alert('Oled kindel?', 'valid');
     }
     e.preventDefault();

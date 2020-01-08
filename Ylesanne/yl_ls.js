@@ -20,14 +20,14 @@ class LS {
         localStorage.setItem('ylesanded', JSON.stringify(ylesanded));
         console.log(ylesanded);
     }
-    kustutaYlesanneLS(ylesanne){
+    kustutaYlesanneLS(task){
         // vaatame, millised raamatud on olemas
         // loome kasutajaliidese objekti temaga opereerimiseks
         const kl = new KL();
         const ylesanded = this.loeYlesannet();
         ylesanded.forEach(function(sisend, index){
         // loeme andmed local storagest ühekaupa ja võrdleme 
-        if(sisend.ylesanne === ylesanne){
+        if(sisend.ylesanne === task){
             ylesanded.splice(index, 1);
             
         }
