@@ -18,20 +18,43 @@ class LS {
         ylesanded.push(r);
         // lisame andmed local storagesse
         localStorage.setItem('ylesanded', JSON.stringify(ylesanded));
-        console.log(ylesanded);
+        console.log(JSON.stringify(ylesanded));
+        const taskList = document.querySelector('#collection');
+        if(localStorage.getItem('ylesanded') === null){
+            ylesanded = '';
+        } else {
+            ylesanded = localStorage.getItem('ylesanded');
+        }
+        ylesanded = taskList.innerHTML;
+        localStorage.setItem('ylesanded', ylesanded);
     }
-    kustutaYlesanneLS(task){
+    kustutaYlesanneLS(e){
+        
+
+
+        // taskList.innerHTML = '';
+
+        if(e.target.parentElement.parentElement.classList.contains('kustuta')){
+            if(confirm('Kas soovid kustutada Ülesanne?')) {
+              e.target.parentElement.parentElement.remove();
+              // update local storage 
+              this.salvestaYlesanne();
+            }
+          }
         // vaatame, millised raamatud on olemas
         // loome kasutajaliidese objekti temaga opereerimiseks
-        const kl = new KL();
-        const ylesanded = this.loeYlesannet();
-        ylesanded.forEach(function(sisend, index){
+
+        // const kl = new KL();
+        // const ylesanded = this.loeYlesannet();
+        // ylesanded.forEach(function(sisend, index){
+
         // loeme andmed local storagest ühekaupa ja võrdleme 
-        if(sisend.ylesanne === task){
-            ylesanded.splice(index, 1);
+
+        // if(sisend.ylesanne === task){
+        //     ylesanded.splice(index, 1);
             
-        }
-    });
+        // }
+    // });
         // lisame andmed local storagesse 
         localStorage.setItem('ylesanded', JSON.stringify(ylesanded));
         // kinnitan kustutamist teate väljastamiseks 

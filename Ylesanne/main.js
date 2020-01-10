@@ -38,28 +38,28 @@ function lisaYlesanne(e){
 }
 
 // Raamatu kustutamise sündmus 
-document.getElementById('collection').addEventListener('click', kustutaYlesanne);
-function kustutaYlesanne(e){
-    // loome kasutajaliidese objekti temaga opereerimiseks
-    const kl = new KL();
+// document.getElementById('collection').addEventListener('click', kustutaYlesanne);
+// function kustutaYlesanne(e){
+//     // loome kasutajaliidese objekti temaga opereerimiseks
+//     const kl = new KL();
 
-    // kutsutakse tabelist oleva raamatu kustutamise funktsiooni 
-    // loome X link, millele clickime, et kustutada 
-    const X = e.target; 
-    // saame kustutava raamatu isbn kätte 
-    task = X.parentElement.textContent;
-    console.log(task);
-    // kustutame andmed tabeli väljundist 
-    kl.kustutaYlesanneTabelist(X);
-    // kustutame andmed local storagest 
-    const ls = new LS()
-    kustutatud = ls.kustutaYlesanneLS(task);
-    // väljastame vastava teate 
-    if(kustutatud){
-    alert('Oled kindel?', 'valid');
-    }
-    e.preventDefault();
-}
+//     // kutsutakse tabelist oleva raamatu kustutamise funktsiooni 
+//     // loome X link, millele clickime, et kustutada 
+//     const X = e.target; 
+//     // saame kustutava raamatu isbn kätte 
+//     task = X.parentElement.textContent;
+//     console.log(task);
+//     // kustutame andmed tabeli väljundist 
+//     kl.kustutaYlesanneTabelist(X);
+//     // kustutame andmed local storagest 
+//     const ls = new LS()
+//     kustutatud = ls.kustutaYlesanneLS(task);
+//     // väljastame vastava teate 
+//     if(kustutatud){
+//     alert('Oled kindel?', 'valid');
+//     }
+//     e.preventDefault();
+// }
 
 document.getElementById('clear-tasks').addEventListener('click', kustutaKoikYlesanded);
 function kustutaKoikYlesanded(k){

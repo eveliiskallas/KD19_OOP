@@ -5,16 +5,18 @@ class KL {
 
     // lisaRaamatTabelisse
     lisaYlesanneTabelisse (r){
-        const rida = document.createElement('li');
-        // täidame rea tabeli andmetega 
-        rida.innerHTML = `
-            ${r.ylesanne}<a href="#" class="kustuta">X</a>
-            
-        `;
+       const taskInput = document.querySelector('#task');
+       const taskList = document.querySelector('#collection');
 
-        // lisame rea tabeli sisse <td><a href="#"><i class="fas fa-times kustuta"></i></a></td>
-        const list = document.getElementById('collection');
-        list.appendChild(rida);
+       const li = document.createElement('li');
+       li.className = 'collection-item';
+       li.appendChild(document.createTextNode(taskInput.value));
+       const link = document.createElement('a');
+       link.className = 'kustuta secondary-content';
+       link.innerHTML = `<i class="fa fa-remove"></i>`;
+       li.appendChild(link);
+       taskList.appendChild(li);
+
     }
 
         // kustutaRaamatTabelist 
@@ -28,16 +30,43 @@ class KL {
 
     naitaYlesannet(){
         // vaatame, millised raamatud on olemas 
-        const ls = new LS()
 
-        const ylesanded = ls.loeYlesannet();
-        ylesanded.forEach(function(sisend){
-            // loeme andmed local storagest ühekaupa ja teisendame Raamat objektiks 
-            const r = new Ylesanne(sisend['ylesanne']);
-            // loome kl objekti väljastamiseks 
-            const kl = new KL();
-            // väljastame tabeli rida
-            kl.lisaYlesanneTabelisse(r);
+        let ylesanded;
+        const taskInput = document.querySelector('#task');
+        const taskList = document.querySelector('#collection');
+        const ls = new LS();
+
+        ls.loeYlesannet();
+
+        ylesanded.forEach(function(r){
+            const li = document.createElement('li');
+            li.className = 'collection-item';
+            li.appendChild(document.createTextNode(r));
+            const link = document.createElement('a');
+            link.className = 'kustuta secondary-content';
+            link.innerHTML = `<i class="fa fa-remove"></i>`;
+            li.appendChild(link);
+            taskList.appendChild(li);
         });
+        if(localStorage.getItem('ylesanded') === null){
+            ylesanded = '';
+        } else {
+            ylesanded = localStorage.getItem('ylesanded');
+        }
+        taskList.innerHTML = ylesanded;
+
+
+
+        // const ylesanded = ls.loeYlesannet();
+        // ylesanded.forEach(function(sisend){
+        //     // loeme andmed local storagest ühekaupa ja teisendame Raamat objektiks 
+        //     const r = new Ylesanne(sisend['ylesanne']);
+        //     // loome kl objekti väljastamiseks 
+        //     const kl = new KL();
+        //     // väljastame tabeli rida
+        //     kl.lisaYlesanneTabelisse(r);
+        // });
+
+
     }
 }
