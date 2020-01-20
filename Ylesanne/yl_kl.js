@@ -26,6 +26,7 @@ class KL {
     kustutaKoikYlesanded(){
         while(taskList.firstChild){
             document.querySelector('.collection').removeChild(taskList.firstChild);
+            localStorage.clear();
         }
     }
 

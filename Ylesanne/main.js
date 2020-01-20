@@ -12,15 +12,6 @@ function ylesanneteTabel(e){
     // kutsume raamatute näitamise funktsiooni
     kl.naitaYlesannet();
     e.preventDefault();
-};
-
-document.getElementById('clear-tasks').addEventListener('click', kustutaYl);
-function kustutaYl(e){
-
-    const kl = new KL();
-    kl.kustutaKoikYlesanded();
-    e.preventDefault();
-
 }
 
 document.getElementById('task-form').addEventListener('submit', lisaYlesanne);
@@ -64,3 +55,11 @@ function eemaldaYlesanne(e){
     e.preventDefault();
 }
 
+document.getElementById('clear-tasks').addEventListener('click', kustutaYl);
+function kustutaYl(e){
+
+    const kl = new KL();
+    kl.kustutaKoikYlesanded();
+    e.preventDefault();
+
+}
